@@ -1,6 +1,3 @@
-### What we're not doing today
-
-
 ### Adding quotes to the app
 There are many ways to go about this. You may have heard of Rails scaffolding, for instance. That would create us a framework for doing all basic CRUD operations on the quotes. Today, though, we wanna focus on each of the five layers of the web request that are in our control (all but the browser) to learn a bit more in-depth about what's happening. If you want to see how blistering quickly one can add this kind of functionality to an app, it may be fun to watch [The world famous DHH demo from 2005](https://www.youtube.com/watch?v=Gzj723LkRJY). WARNING: Rails has changed a lot since then, so following along won't be easy!
 
