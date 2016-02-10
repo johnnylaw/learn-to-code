@@ -1,1 +1,17 @@
 <h1>Quotes</h1>
+<%= link_to "Add a quote", new_quote_path %>
+<% @quotes.each do |quote| %>
+  <p>
+    <blockquote>&ldquo; <%= quote.body %>&rdquo;</blockquote>
+    <cite>
+        &mdash;<%= quote.author %>
+        <% unless quote.year.nil? %>
+            in <%= quote.year %>
+        <% end %>
+    </cite>
+    <% unless quote.verified %>
+      (The origin of this quote has not been verified.)
+    <% end %>
+  </p>
+  <hr />
+<% end %>
