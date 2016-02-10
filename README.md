@@ -1,6 +1,8 @@
+### What we're not doing today
+
 
 ### Adding quotes to the app
-There are many ways to go about this. You may have heard of Rails scaffolding, for instance. That would create us a framework for doing all basic CRUD operations on our
+There are many ways to go about this. You may have heard of Rails scaffolding, for instance. That would create us a framework for doing all basic CRUD operations on the quotes. Today, though, we wanna focus on each of the five layers of the web request that are in our control (all but the browser) to learn a bit more in-depth about what's happening. If you want to see how blistering quickly one can add this kind of functionality to an app, it may be fun to watch [The world famous DHH demo from 2005](https://www.youtube.com/watch?v=Gzj723LkRJY). WARNING: Rails has changed a lot since then, so following along won't be easy!
 
 #### Creating a "Quote" model (and database table)
 ```bash
@@ -17,6 +19,12 @@ Quote.create(
   author: "Redd Foxx",
   year: nil,
   verified: true
+)
+Quote.create(
+  body: "Wherever you go, there you are.",
+  author: "Buckaroo Bonzai",
+  year: 1997,
+  verified: false
 )
 puts "Count of quotes in the database: #{Quote.count}"
 puts "Attributes of first quote in the database:\n#{Quote.first.attributes}"
@@ -158,35 +166,6 @@ Lastly we need a way to get to the new quote form other than typing in the URL m
 Repeat the whole process above, this time making a Post instead of a Quote. Add a way to list them and add them. Go back through the directions we just used and notice where small changes need to be made. The post should have similar fields but slightly different (body, author, number of likes, and whether or not it has been published yet). When making your seeds.rb file, be sure to make at least one post that has been published and one that has NOT. The absolute biggest deviation will be in your index view, in which you should display a Post only if it has been published. See if you can see the patterns for conditionally showing things. In some ways the Quote display is more complex. Mentors will be standing by to assist!
 
 #### Extra exploration
-With the help of your mentor, see if you can figure out how to EDIT a Post. You'll have to change the view to show all posts and state whether published or not (more like the Quote example). You'll also have to add an edit link. Remember how Rails made us routes with names like quotes_path. Is there an edit path made for us? Hint: YES! See if you can find it. See if you can use [http://guides.rubyonrails.org/routing.html] section 2.3 to figure out what additional information you need to supply to use it.
+With the help of your mentor, see if you can figure out how to EDIT a Post. You'll have to change the view to show all posts and state whether published or not (more like the Quote example). You'll also have to add an edit link. Remember how Rails made us routes with names like quotes_path. Is there an edit path made for us? Hint: YES! See if you can find it. See if you can use http://guides.rubyonrails.org/routing.html section 2.3 to figure out what additional information you need to supply to use it.
 If you get to this, you'll notice that the forms for editing and creating a new Post look remarkably similar. Your mentors can teach you how to observe the DRY principle here.
 
-### Creating a new app from scratch
-
-All you would technically need to do to start a new Rails app, provided that both the Ruby language and the Rails gem are installed on your system.
-```bash
-$ rails new my_app
-```
-To start the app with something a little more fun to look at, I used rails-composer as follows. From a command line I typed this line:
-```bash
-$ rails new my_app -m https://raw.github.com/RailsApps/rails-composer/master/composer.rb
-```
-and chose the following options (Many of these are not the option I would choose for an application that I plan to put in production, but they're ample for getting us started):
-```bash
-Build a starter application? 1 (example application)
-Choose a starter application. 2 (rails-bootstrap)
-Web server for development? 1 (Webrick)
-Web server for production? 1 (same as development)
-Database used in development? 1 (SQLite)
-Template engine? 1 (ERB)
-Test framework? 1 (None)
-Use a form builder gem? 1 (None)
-Add Bootstrap page templates? 8 (Business Casual; see startbootstrap.com for choices)
-Install page-view analytics? 1 (None)
-Prepare for deployment? 1 (No)
-Disable Rails Turbolinks? y
-Set a robots.txt file to ban spiders? n
-Create a GitHub repository? n
-Use or create a project-specific rvm gemset? n
-
-```
