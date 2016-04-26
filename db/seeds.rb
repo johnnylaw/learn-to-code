@@ -19,3 +19,9 @@ Quote.create(
 )
 puts "Count of quotes in the database: #{Quote.count}"
 puts "Attributes of first quote in the database:\n#{Quote.first.attributes}"
+
+Post.create(
+  body: "Words",
+  author: "Bob",
+  published: true
+)

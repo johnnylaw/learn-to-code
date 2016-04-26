@@ -1,0 +1,13 @@
+<h1>Posts</h1>
+<%= link_to "Add a post", new_post_path %>
+<% @posts.each do |post| %>
+  <p>
+    <blockpost>&ldquo; <%= post.body %>&rdquo;</blockpost>
+    <cite>
+        &mdash;<%= post.author %>
+
+    </cite>
+
+  </p>
+  <hr />
+<% end %>
